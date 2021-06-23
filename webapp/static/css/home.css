@@ -1,0 +1,114 @@
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/oswald/v36/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvgUE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", Oswald, sans-serif;
+}
+body {
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  min-height: 100vh;
+  background-color: #20283a;
+  color: #b6cbdd;
+  font-size: 24px;
+}
+body header {
+  display: grid;
+  place-items: center;
+  font-size: 50px;
+}
+body header div span {
+  color: #36dd87;
+}
+body section {
+  display: flex;
+  max-height: calc(100vh * 0.6);
+}
+body section .time-periods {
+  flex-grow: 1;
+  grid-area: time-periods;
+  padding: 10px;
+}
+body section .time-periods button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: rgba(182, 203, 221, 0.7);
+  border: 2px solid rgba(182, 203, 221, 0.2);
+  opacity: 70%;
+  font-size: max(15px, min(3vw, 30px));
+  outline: none;
+  border-radius: 10000px;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+body section .time-periods button:hover {
+  border-color: #36dd87;
+}
+body section .time-periods button.selected {
+  border-color: #36dd87;
+  color: #36dd87;
+}
+body section .time-periods button + button {
+  margin-top: 10px;
+}
+body section .chart {
+  flex-grow: 3;
+  height: 100%;
+  width: calc(100vw * 0.6);
+  position: relative;
+  border-radius: 10px;
+  background-color: #b6cbdd;
+}
+body section .info {
+  grid-area: info;
+  color: #b6cbdd;
+  opacity: 70%;
+  font-size: max(15px, min(3vw, 30px));
+  padding: 10px;
+}
+body section .info div + div {
+  margin-top: 10px;
+}
+body section .info span {
+  color: #36dd87;
+}
+@media (max-width: 550px) {
+  html body section {
+    flex-direction: column;
+  }
+  html body section .chart {
+    width: calc(100vw - 20px);
+    margin-left: 10px;
+  }
+  html body section .time-periods {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  html body section .time-periods button + button {
+    margin: 0 0 0 10px;
+  }
+  html body section .info {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  html body section .info div {
+    margin: 0;
+    text-align: center;
+  }
+}

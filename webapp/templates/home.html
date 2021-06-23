@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BengStock</title>
+
+    <link rel="stylesheet" href="../static/css/home.css">
+    <script defer src="../static/js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+    
+</head>
+<body>
+
+    <header>
+        <div>Beng<span>Stock</span></div>
+    </header>
+
+    <section>
+        <div class="time-periods">
+            <button id="day">Tag</button>
+            <button id="week">Woche</button>
+            <button id="month">Monat</button>
+            <button id="all">Alles</button>
+        </div>
+
+        <div class="chart"><canvas></canvas></div>
+
+        <div class="info">
+            <div>Letzter Wert<br><span id="last-value">273672</span></div>
+            <div>Tagesmaximum<br><span id="daily-max">203748</span></div>
+        </div>
+    </section>
+
+    <footer></footer>
+
+    <script>
+
+        document.querySelector("#last-value").innerText = {{ last }};
+        document.querySelector("#daily-max").innerText = {{ max }};
+
+        var selected = document.querySelector(".time-periods #all");
+        selected.classList.add("selected");
+
+        for (const btn of document.querySelectorAll(".time-periods button")) {
+            btn.onclick = () => {
+                selected.classList.remove("selected");
+                btn.classList.add("selected");
+                selected = btn;
+            }
+        }
+        
+
+        let chart = document.querySelector('.chart canvas');
+        let result = {{ res|tojson }};
+
+        var gradientFill = chart.getContext("2d").createLinearGradient(500, 90, 100, 90);
+        gradientFill.addColorStop(0, "#36dd87");
+        gradientFill.addColorStop(1, "#dd8736");
+
+        var lineChart = new Chart(chart, {
+            type: "line",
+            data: {
+                labels: {{ x|tojson }},
+                datasets: [{
+                  label: 'EuroStocks',
+                  data: {{ y|tojson }},
+                  fill: true,
+                  borderColor: '#36dd87',
+                  backgroundColor: gradientFill,
+                  tension: 0.1
+                }]
+              },
+            options: {
+                scales: {
+                    xAxes: [{
+                       gridLines: {
+                          display: false
+                       }
+                    }],
+                    yAxes: [{
+                       gridLines: {
+                          display: false
+                       }
+                    }]
+                },
+                maintainAspectRatio: false
+            }
+        })
+
+        var width;
+        var height;
+
+        setInterval(() => {
+            //console.log(width, window.innerWidth)
+            if (width !== window.innerWidth || height !== window.innerHeight) {
+                console.log(chart.height, chart.parentNode.clientHeight);
+
+                chart.width = chart.parentNode.clientWidth;
+                chart.height = chart.parentNode.clientHeight;
+                lineChart.resize();
+
+                //console.log(chart.width, chart.height)
+
+                width = window.innerWidth;
+                height = window.innerHeight;
+                lineChart.draw()
+            }
+        }, 100);
+
+    </script>
+</body>
+</html>
