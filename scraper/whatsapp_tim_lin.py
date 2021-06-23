@@ -15,6 +15,6 @@ def send_wa(message):
     client = Client(account_sid, auth_token, http_client=proxy_client)
 
     from_whatsapp_number = "whatsapp:+14155238886"
-    to_whatsapp_number = "whatsapp:+4915732535034"
+    to_whatsapp_number = "whatsapp:+4915233661319"
 
     client.messages.create(body = message, from_ = from_whatsapp_number, to = to_whatsapp_number)

@@ -5,7 +5,7 @@ from datetime import datetime
 import mysql.connector
 from twilio.base.exceptions import TwilioRestException
 
-from whatsapp_beng_lin import send_wa
+from whatsapp_tim_lin import send_wa
 
 def get_soup(stock):
     stocks = {"estx":r"https://de.finance.yahoo.com/quote/%5ESTOXX50E?p=%5ESTOXX50E", "silber":""}
@@ -49,6 +49,7 @@ while True:
             pass
 
     try:
+        mydb.reconnect()
         mycursor = mydb.cursor()
         sql = f"INSERT INTO data (date, time, curr_val, daily_max) VALUES ( NOW(), {currtime} , {curr}, {high});"
         mycursor.execute(sql)
