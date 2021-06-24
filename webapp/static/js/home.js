@@ -13,7 +13,7 @@ for (const btn of document.querySelectorAll(".time-periods button")) {
 
 let chart = document.querySelector('.chart canvas');
 
-fetch("https://bengstock.pythonanywhere.com/get_data", { mode:"no-cors" }).then(res => res.json() ).then(data => {
+fetch("/get_data").then(res => res.json() ).then(data => {
 
     console.log(data);
 
