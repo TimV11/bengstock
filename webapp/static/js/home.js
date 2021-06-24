@@ -35,7 +35,7 @@ var lineChart = new Chart(chart, {
             data: data.y,
             fill: true,
             borderColor: '#36dd87',
-            backgroundColor: "#36dd8780",
+            backgroundColor: "#ffdd8780",
             tension: 0.1
         }]
         },
