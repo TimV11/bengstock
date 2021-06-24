@@ -1,8 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 import mysql.connector
 
+import git
+
 from datetime import datetime
+
+
 
 app = Flask(__name__)
 
@@ -33,3 +37,14 @@ def home():
     last_value = res[-1][3]
 
     return render_template("home.html", x=x_axis, y=y_axis, max=daily_max, last=last_value, res=res)
+
+
+@app.route("/reload_app", methods=["POST"])
+def reload_app():
+    if request.method == "POST":
+        repo = git.Repo('/home/bengstock/bengstock')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400

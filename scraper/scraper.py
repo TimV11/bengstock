@@ -5,7 +5,7 @@ from datetime import datetime
 import mysql.connector
 from twilio.base.exceptions import TwilioRestException
 
-from whatsapp_tim_lin import send_wa
+from whatsapp_lin import msg_tim as send_wa
 
 def get_soup(stock):
     stocks = {"estx":r"https://de.finance.yahoo.com/quote/%5ESTOXX50E?p=%5ESTOXX50E", "silber":""}
