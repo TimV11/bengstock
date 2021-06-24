@@ -41,10 +41,13 @@ def home():
 
 @app.route("/reload_app", methods=["POST"])
 def reload_app():
-    if request.method == "POST":
-        repo = git.Repo('/home/bengstock/bengstock')
-        origin = repo.remotes.origin
-        origin.pull()
-        return 'Updated PythonAnywhere successfully', 200
-    else:
-        return 'Wrong event type', 400
+    try:
+        if request.method == "POST":
+            repo = git.Repo('/home/bengstock/bengstock')
+            origin = repo.remotes.origin
+            origin.pull()
+            return 'Updated PythonAnywhere successfully', 200
+        else:
+            return 'Wrong event type', 400
+    except Exception as e:
+        return str(e)
