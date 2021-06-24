@@ -15,9 +15,7 @@ let chart = document.querySelector('.chart canvas');
 
 fetch("/get_data").then(res => res.json() ).then(data => {
 
-    console.log(data);
 
-});
     
 document.querySelector("#last-value").innerText = data.last;
 document.querySelector("#daily-max").innerText = data.max;
@@ -85,3 +83,4 @@ setInterval(() => {
     }
 }, 100);
 
+});
