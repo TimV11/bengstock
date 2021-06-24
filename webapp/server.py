@@ -58,14 +58,8 @@ def send_data():
         daily_max = res[-1][4]
         last_value = res[-1][3]
 
-        data = {
-            "x": x_axis,
-            "y": y_axis,
-            "max": daily_max,
-            "last": last_value
-            }
 
-        return jsonify(x_axis, y_axis, daily_max, last_value), 200
+        return jsonify(x=x_axis, y=y_axis, max=daily_max, last=last_value), 200
 
     except Exception as e:
         return str(e), 200
