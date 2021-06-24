@@ -22,7 +22,7 @@ body {
   display: grid;
   grid-template-rows: 1fr 3fr 1fr;
   min-height: 100vh;
-  background-color: #20283a;
+  background-color: #242d41;
   color: #b6cbdd;
   font-size: 24px;
 }
@@ -72,7 +72,7 @@ body section .chart {
   width: calc(100vw * 0.6);
   position: relative;
   border-radius: 10px;
-  background-color: #171d2a;
+  background-color: #1b2231;
 }
 body section .info {
   grid-area: info;
