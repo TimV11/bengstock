@@ -7,6 +7,8 @@ from twilio.base.exceptions import TwilioRestException
 
 from whatsapp_lin import msg_tim as send_wa
 
+
+
 def get_soup(stock):
     stocks = {"estx":r"https://de.finance.yahoo.com/quote/%5ESTOXX50E?p=%5ESTOXX50E", "silber":""}
     result = requests.get(stocks.get(stock))
