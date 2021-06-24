@@ -16,7 +16,7 @@ let chart = document.querySelector('.chart canvas');
 var data;
 fetch("https://bengstock.pythonanywhere.com/get_data", {mode:"no-cors"})
     .then(res => res.json())
-    .then(d => Object.assign(data, d))
+    .then(d => {Object.assign(data, d); console.log(d)})
 
 document.querySelector("#last-value").innerText = data.last;
 document.querySelector("#daily-max").innerText = data.max;
