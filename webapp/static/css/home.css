@@ -72,7 +72,7 @@ body section .chart {
   width: calc(100vw * 0.6);
   position: relative;
   border-radius: 10px;
-  background-color: #b6cbdd;
+  background-color: #171d2a;
 }
 body section .info {
   grid-area: info;
