@@ -62,8 +62,7 @@ def send_data():
             "x": x_axis,
             "y": y_axis,
             "max": daily_max,
-            "last": last_value,
-            "res": res
+            "last": last_value
             }
 
         return json.dumps(data), 200
