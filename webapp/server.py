@@ -36,7 +36,7 @@ def home():
     daily_max = res[-1][4]
     last_value = res[-1][3]
 
-    return render_template("home.html", x=x_axis, y=y_axis, max=daily_max, last=last_value, res=res)
+    return render_template("home.html")
 
 
 @app.route("/get_data")
