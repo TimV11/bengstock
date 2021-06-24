@@ -31,7 +31,7 @@ def home():
 
     x_axis = [datetime.strptime(f"{i[1]} {i[2]}", format).strftime("%H:%M") for i in res]
 
-    y_axis = [i[3] for i in res]
+    y_axis = [i[3] / 100 for i in res]
 
     daily_max = res[-1][4]
     last_value = res[-1][3]
