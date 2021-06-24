@@ -39,6 +39,7 @@ def home():
     return render_template("home.html", x=x_axis, y=y_axis, max=daily_max, last=last_value, res=res)
 
 
+# Github Webhook
 @app.route("/reload_app", methods=["POST"])
 def reload_app():
     try:
