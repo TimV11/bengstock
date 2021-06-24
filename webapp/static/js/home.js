@@ -13,7 +13,7 @@ for (const btn of document.querySelectorAll(".time-periods button")) {
 
 let chart = document.querySelector('.chart canvas');
 
-let data;
+var data;
 fetch("get_data")
     .then(res => res.json())
     .then(d => data = d)
