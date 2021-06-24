@@ -65,7 +65,7 @@ def send_data():
             "last": last_value
             }
 
-        return jsonify(data), 200
+        return jsonify(x_axis, y_axis, daily_max, last_value), 200
 
     except Exception as e:
         return str(e), 200
