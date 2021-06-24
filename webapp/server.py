@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 import mysql.connector
 
-import os, json
+import os
 
 from datetime import datetime
 
@@ -62,10 +62,12 @@ def send_data():
             "x": x_axis,
             "y": y_axis,
             "max": daily_max,
-            "last": last_value
+            "last": last_value,
+            "res": res
             }
 
-        return json.dumps(data), 200
+        return jsonify(data), 200
+
     except Exception as e:
         return str(e), 200
 
