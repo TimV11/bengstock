@@ -70,42 +70,13 @@
                   borderColor: '#36dd87',
                   backgroundColor: "#36dd8780",
                   tension: 0.1
-                }]
-              },
-            options: {
-                elements: {
-                    point: {
-                        radius: 0
-                    }
                 },
-                scales: {
-                    xAxes: [{
-                       gridLines: {
-                          //show: false,
-                          lineWidth: 5
-                       }
-                    }],
-                    yAxes: [{
-                       gridLines: {
-                          //show: false,
-                          lineWidth: 5
-                       }
-                    }]
-                },
-                maintainAspectRatio: false
-            }
-        })
-
-        var lineChartTwo = new Chart(chart, {
-            type: "line",
-            data: {
-                labels: {{ x|tojson }}.reverse(),
-                datasets: [{
-                  label: 'EuroStocks',
+                {
+                  label: 'StocksEuro',
                   data: {{ y|tojson }}.reverse(),
                   fill: true,
-                  borderColor: '#dd8736',
-                  backgroundColor: "#dd873680",
+                  borderColor: '#36dd87',
+                  backgroundColor: "#36dd8780",
                   tension: 0.1
                 }]
               },
@@ -144,14 +115,12 @@
                 chart.width = chart.parentNode.clientWidth;
                 chart.height = chart.parentNode.clientHeight;
                 lineChart.resize();
-                lineCharttwo.resize();
 
                 //console.log(chart.width, chart.height)
 
                 width = window.innerWidth;
                 height = window.innerHeight;
                 lineChart.draw();
-                lineCharttwo.draw();
             }
         }, 100);
 
