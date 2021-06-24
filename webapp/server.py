@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 
 import mysql.connector
 
-import git
+import os
 
 from datetime import datetime
 
@@ -43,12 +43,14 @@ def home():
 @app.route("/reload_app", methods=["POST"])
 def reload_app():
     try:
-        if request.method == "POST":
-            repo = git.Repo('/home/bengstock/bengstock')
-            origin = repo.remotes.origin
-            origin.pull()
-            return 'Updated PythonAnywhere successfully', 200
-        else:
-            return 'Wrong event type', 400
+        # if request.method == "POST":
+        #     repo = git.Repo('/home/bengstock/bengstock')
+        #     origin = repo.remotes.origin
+        #     origin.pull()
+        #     return 'Updated PythonAnywhere successfully', 200
+        # else:
+        #     return 'Wrong event type', 400
+
+        os.system("cd /home/bengstock/bengstock && git pull origin master")
     except Exception as e:
         return str(e)
