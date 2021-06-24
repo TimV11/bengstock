@@ -52,5 +52,6 @@ def reload_app():
         #     return 'Wrong event type', 400
 
         os.system("cd /home/bengstock/bengstock && git pull origin master")
+        return "Server Reload successful.", 200
     except Exception as e:
         return str(e)
