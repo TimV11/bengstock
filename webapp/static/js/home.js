@@ -13,12 +13,14 @@ for (const btn of document.querySelectorAll(".time-periods button")) {
 
 let chart = document.querySelector('.chart canvas');
 
-var data;
-fetch("https://bengstock.pythonanywhere.com/get_data", {mode:"no-cors"})
-    .then(res => res.json()).then(d => {
-        Object.assign(data, d);
-        console.log(d);
-    })
+var data = await fetch("https://bengstock.pythonanywhere.com/get_data", {mode:"no-cors"}).then(res => res.json())
+// fetch("https://bengstock.pythonanywhere.com/get_data", {mode:"no-cors"})
+//     .then(res => res.json()).then(d => {
+//         Object.assign(data, d);
+//         console.log(d);
+//     })
+
+console.log(data)
 
 document.querySelector("#last-value").innerText = data.last;
 document.querySelector("#daily-max").innerText = data.max;
