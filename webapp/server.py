@@ -66,7 +66,7 @@ def send_data():
             "res": res
             }
 
-        return json.stringify(data), 200
+        return json.dumps(data), 200
     except Exception as e:
         return str(e), 200
 
