@@ -16,7 +16,7 @@ let chart = document.querySelector('.chart canvas');
 var data;
 fetch("get_data")
     .then(res => res.json())
-    .then(d => data = d)
+    .then(d => console.log(d))
 
 document.querySelector("#last-value").innerText = data.last;
 document.querySelector("#daily-max").innerText = data.max;
